@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memegenrator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <section class="container header-wrapper flex align-center">
+            <div onclick="window.location.reload();" class="logo flex-1">
+                Memegenrator
+            </div>
+            <nav id="mainMenu" class="main-menu-wrapper">
+                <ul class="main-menu clean-list flex align-center">
+                    <li>
+                        <a href="#" class="active">Memes</a>
+                    </li>
+                    <li>
+                        <a href="#">Gallery</a>
+                    </li>
+
+
+                </ul>
+                <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu"></button>
+                <div class="toggle-menu-screen screen" onclick="toggleMenu()" alt="toggle main menu"></div>
+            </nav>
+
+        </section>
+    </header>
+
+    <div class="search flex justify-center align-center">
+        <input onchange="onSetFilter(this.value,event)" list="brow" placeholder="Search..">
+        <datalist id="brow">
+            <option value="trump">
+            <option value="dogs">
+            <option value="cute">
+            <option value="tv">
+        </datalist>
+
+    </div>
+
+    <main>
+        <div class="images images-wrapper grid">
+
+        </div>
+
+
+        <button class="back-search" onclick="window.location.reload()">Back to gallery...</button>
+        <section class="text-wrapper">
+
+            <section class="meme-container">
+                <div class="canvas-container">
+                    <canvas id="mycanvas" width="650px" height="420px">
+                    </canvas>
+
+            </section>
+            <section class="text-editor">
+                <input onclick="onEdit()" oninput="onChangeText()" class="txt" type="text"
+                    placeholder="Enter Text Here">
+                <button onclick="onChangeLine()" class="switch"> <img src="images/switch.png"></button>
+
+                <button onclick="onAddLine()" class="add"> <img src="images/add.png"></button>
+
+                <button class="delete-btn" onclick="onClearText()"> <img src="images/delete.png"></button>
+
+                <button class="increase" onclick="onIncreaseFont()"> <img src="images/increase.png"></button>
+
+                <button class="decrease" onclick="onDecreaseFont()"> <img src="images/decrease.png"></button>
+
+                <button id="left" class="align-left" onclick="onAlignText(this.id)"> <img
+                        src="images/left.png"></button>
+
+                <button id="center" class="align-center" onclick="onAlignText(this.id)"> <img
+                        src="images/center.png"></button>
+                <button class="palette flex">Color<input class="color-btn" type="color"
+                        onchange="onSetColor(this.value)" /></button>
+
+
+                <button id="right" class="align-right" onclick="onAlignText(this.id)"> <img
+                        src="images/right.png"></button>
+                <button class="stroke flex"><img src="images/stroke.png"><input class="stroke-btn" type="color"
+                        onchange="onSetStroke(this.value)" /></button>
+                <select class="font" name="" id="" onchange="onSetFont(this.value)">
+                    <option value="Arial">Arial</option>
+                    <option value="fontawesome">font awesome</option>
+                    <option value="eurofbold">eurofbold</option>
+                </select>
+
+
+
+                <button class="save" onclick="onSaveMeme()">Save meme</button>
+
+                <button class="download"><a href="#" onclick="downloadCanvas(this)" download="meme.jpg">Download
+                    </a></button>
+
+                <button class="share" onclick="uploadImg()">Upload</button>
+
+                <p class="user-msg"></p>
+
+                <div class="share-container">
+                </div>
+                </div>
+
+            </section>
+        </section>
+
+
+
+    </main>
+
+    <script>
+        function toggleMenu() {
+            var mainMenu = document.getElementById('mainMenu');
+            console.log(mainMenu);
+            mainMenu.classList.toggle('open');
+        }
+    </script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/gallery-service.js"></script>
+    <script src="js/gallery-controller.js"></script>
+    <script src="js/canvas-meme-service.js"></script>
+    <script src="js/canvas-service.js"></script>
+
+
+</body>
+
+</html>
